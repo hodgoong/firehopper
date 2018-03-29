@@ -56,7 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="firehopperComponent.cs" />
+    <Compile Include="firehopperCompGet.cs" />
+    <Compile Include="firehopperCompConfig.cs" />
+    <Compile Include="firehopperCompPut.cs" />
     <Compile Include="firehopperInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

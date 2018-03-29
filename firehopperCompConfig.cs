@@ -11,7 +11,7 @@ using Rhino.Geometry;
 
 namespace firehopper
 {
-    public class firehopperComponent : GH_Component
+    public class firehopperCompConfig : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -20,7 +20,7 @@ namespace firehopper
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public firehopperComponent()
+        public firehopperCompConfig()
           : base("firehopper", "ASpi",
               "Access to Google Firebase for parameter and data sharing",
               "General, Programming Tools", "Web, Data Sharing")
@@ -71,7 +71,7 @@ namespace firehopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("5bca8077-2fd3-4f3e-9bda-71670e1d60cf"); }
+            get { return new Guid("7c9882ea-2147-4b56-8951-e202961fd6dd"); }
         }
     }
 }
