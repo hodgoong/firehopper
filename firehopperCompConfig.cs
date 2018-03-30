@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
+using System.Net;
+using System.IO;
+using System.Web.Script.Serialization;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
@@ -13,6 +18,12 @@ namespace firehopper
 {
     public class firehopperCompConfig : GH_Component
     {
+        public string apiKey;
+        public string databaseURL;
+        public bool trigger;
+
+        public string response;
+
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
         /// constructor without any arguments.
@@ -21,9 +32,9 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompConfig()
-          : base("firehopper", "ASpi",
-              "Access to Google Firebase for parameter and data sharing",
-              "General, Programming Tools", "Web, Data Sharing")
+          : base("Firehopper Config", "Config",
+              "Create header for http request to Google Firebase using Firebase credentials",
+              "Firehopper", "Firehopper basic")
         {
         }
 
@@ -32,6 +43,8 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddTextParameter("apiKey", "K", "apiKey provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseURL", "U", "databaseURL provided by Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -39,6 +52,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddTextParameter("response", "R", "Response received from the Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -46,8 +60,49 @@ namespace firehopper
         /// </summary>
         /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
         /// to store data in output parameters.</param>
-        protected override void SolveInstance(IGH_DataAccess DA)
+        protected override async void SolveInstance(IGH_DataAccess DA)
         {
+            DA.GetData<string>(0, ref apiKey);
+            DA.GetData<string>(1, ref databaseURL);
+
+            if (trigger == true)
+            {
+                try
+                {
+                    response = await getAsync(apiKey, databaseURL);
+                }
+                catch (Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine(e.Message);
+                }
+
+            }
+
+            DA.SetDataList(0, response);
+        }
+
+        public static async Task<string> getAsync(string _apiKey, string _databaseURL)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(_databaseURL);
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Basic", "Bearer " + _apiKey);
+            HttpResponseMessage res = await httpClient.GetAsync(_databaseURL + "/.json");
+
+            string result;
+            
+            if (res.IsSuccessStatusCode == true)
+            {
+                result = "success";
+            } else
+            {
+                result = "not succeed";
+            }
+
+            return result;
         }
 
         /// <summary>

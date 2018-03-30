@@ -21,9 +21,9 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompPut()
-          : base("firehopper", "ASpi",
-              "Access to Google Firebase for parameter and data sharing",
-              "General, Programming Tools", "Web, Data Sharing")
+          : base("Firehopper Put", "Config",
+              "Create header for http request to Google Firebase using Firebase credentials",
+              "Firehopper", "Firehopper basic")
         {
         }
 
