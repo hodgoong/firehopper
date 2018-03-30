@@ -33,7 +33,7 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompGet()
-          : base("Firehopper Get", "Config",
+          : base("Firehopper Get", "GET",
               "Create header for http request to Google Firebase using Firebase credentials",
               "Firehopper", "Firehopper basic")
         {
@@ -44,10 +44,10 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("apiKey", "K", "apiKey provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseURL", "U", "databaseURL provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseNode", "U", "databaseNode in the Firebase", GH_ParamAccess.item, "");
-            pManager.AddBooleanParameter("trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
+            pManager.AddTextParameter("apiKey", "key", "apiKey provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseURL", "url", "databaseURL provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseNode", "node", "databaseNode in the Firebase", GH_ParamAccess.item, "");
+            pManager.AddBooleanParameter("trigger", "trigger", "Trigger the GET request", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("response", "R", "Response received from the Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("response", "res", "Response received from the Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -75,26 +75,11 @@ namespace firehopper
                 try
                 {
                     response = await getAsync(apiKey, databaseURL, databaseNode);
-
-                    //string nonserializedResponse = await getAsync(apiKey, databaseURL, databaseNode);
-                    //JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                    //serializer.MaxJsonLength = Int32.MaxValue;
-
-                    //if (response != "null")
-                    //{
-                    //    response = serializer.Deserialize<string>(nonserializedResponse);
-                    //}
-                    //else
-                    //{
-                    //    response = "No data stored in the location";
-                    //}
                 }
                 catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e.Message);
                 }
-
             }
 
             if (trigger == false)
@@ -102,7 +87,7 @@ namespace firehopper
                 response = null;
             }
 
-            DA.SetDataList(0, response);
+            DA.SetData(0, response);
         }
 
         public static async Task<string> getAsync(string _apiKey, string _databaseURL, string _databaseNode)
