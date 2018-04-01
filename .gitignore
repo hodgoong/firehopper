@@ -1,6 +1,7 @@
 # Ignore below files:
 ./.git/
 node_modules/
+packages/
 
 .idea
 .vscode

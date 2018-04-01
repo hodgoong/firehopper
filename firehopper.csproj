@@ -65,6 +65,7 @@
     <Compile Include="firehopperCompGet.cs" />
     <Compile Include="firehopperCompPut.cs" />
     <Compile Include="firehopperInfo.cs" />
+    <Compile Include="firehopperKeyValuePairGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
