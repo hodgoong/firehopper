@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System.Net;
-using System.IO;
-using System.Web.Script.Serialization;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
@@ -34,9 +29,9 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompPut()
-          : base("Firehopper Put", "PUT",
-              "Create header for http request to Google Firebase using Firebase credentials",
-              "Firehopper", "Firehopper basic")
+          : base("Firehopper Put", "fhPUT",
+              "PUT request to save data in the Google Firebase",
+              "Firehopper", "HTTP")
         {
         }
 
@@ -45,11 +40,11 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("apiKey", "key", "apiKey provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseURL", "url", "databaseURL provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseNode", "node", "databaseNode in the Firebase", GH_ParamAccess.item, "");
-            pManager.AddTextParameter("keyValuePair", "value", "key-value pair to store in the Firebase", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("trigger", "trigger", "Trigger the GET request", GH_ParamAccess.item);
+            pManager.AddTextParameter("apiKey", "KEY", "apiKey provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseURL", "URL", "databaseURL provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseNode", "NO", "databaseNode in the Firebase", GH_ParamAccess.item, "");
+            pManager.AddTextParameter("keyValuePair", "KVP", "key-value pair to store in the Firebase", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
 
         }
 
@@ -58,7 +53,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("response", "res", "Response received from the Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("Status", "S", "Status received from the Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>

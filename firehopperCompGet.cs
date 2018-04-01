@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System.Net;
-using System.IO;
-using System.Web.Script.Serialization;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
@@ -33,9 +25,9 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompGet()
-          : base("Firehopper Get", "GET",
-              "Create header for http request to Google Firebase using Firebase credentials",
-              "Firehopper", "Firehopper basic")
+          : base("Firehopper Get", "fhGET",
+              "GET request to fetch data from Google Firebase",
+              "Firehopper", "HTTP")
         {
         }
 
@@ -44,10 +36,10 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("apiKey", "key", "apiKey provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseURL", "url", "databaseURL provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseNode", "node", "databaseNode in the Firebase", GH_ParamAccess.item, "");
-            pManager.AddBooleanParameter("trigger", "trigger", "Trigger the GET request", GH_ParamAccess.item);
+            pManager.AddTextParameter("apiKey", "KEY", "apiKey provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseURL", "URL", "databaseURL provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("databaseNode", "NO", "databaseNode in the Firebase", GH_ParamAccess.item, "");
+            pManager.AddBooleanParameter("trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -55,7 +47,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("response", "res", "Response received from the Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("JSON String", "J", "JSON String received from the Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -63,7 +55,7 @@ namespace firehopper
         /// </summary>
         /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
         /// to store data in output parameters.</param>
-        protected override async void SolveInstance(IGH_DataAccess DA)
+        protected override void SolveInstance(IGH_DataAccess DA)
         {
             DA.GetData<string>(0, ref apiKey);
             DA.GetData<string>(1, ref databaseURL);
@@ -72,9 +64,12 @@ namespace firehopper
 
             if (trigger == true)
             {
+                DA.DisableGapLogic();
                 try
                 {
-                    response = await getAsync(apiKey, databaseURL, databaseNode);
+                    response = firebaseManager.getSync(apiKey, databaseURL, databaseNode);
+                    DA.IncrementIteration();
+                    DA.SetData(0, response);
                 }
                 catch (Exception e)
                 {
@@ -85,24 +80,9 @@ namespace firehopper
             if (trigger == false)
             {
                 response = null;
+                DA.IncrementIteration();
+                DA.SetData(0, response);
             }
-
-            DA.SetData(0, response);
-        }
-
-        public static async Task<string> getAsync(string _apiKey, string _databaseURL, string _databaseNode)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(_databaseURL);
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Basic", "Bearer " + _apiKey);
-            HttpResponseMessage res = await httpClient.GetAsync(_databaseURL + _databaseNode + ".json");
-            string responseBodyAsText = await res.Content.ReadAsStringAsync();
-
-            return responseBodyAsText;
         }
 
         /// <summary>
