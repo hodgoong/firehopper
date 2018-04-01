@@ -64,7 +64,6 @@
     <Compile Include="firebaseManager.cs" />
     <Compile Include="firehopperCompGet.cs" />
     <Compile Include="firehopperCompPut.cs" />
-    <Compile Include="firehopperEventTrigger.cs" />
     <Compile Include="firehopperInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

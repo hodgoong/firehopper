@@ -7,7 +7,7 @@ namespace firehopper
 {
     class firebaseManager
     {
-        public async Task<string> getAsync(string _apiKey, string _databaseURL, string _databaseNode)
+        public static async Task<string> getAsync(string _apiKey, string _databaseURL, string _databaseNode)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(_databaseURL);
@@ -22,7 +22,7 @@ namespace firehopper
             return responseBodyAsText;
         }
 
-        public string getSync(string _apiKey, string _databaseURL, string _databaseNode)
+        public static string getSync(string _apiKey, string _databaseURL, string _databaseNode)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(_databaseURL);
@@ -37,7 +37,7 @@ namespace firehopper
             return responseBodyAsText;
         }
 
-        public async Task<string> putAsync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
+        public static async Task<string> putAsync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(_databaseURL);
@@ -53,7 +53,7 @@ namespace firehopper
             return res.StatusCode.ToString();
         }
 
-        public string putSync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
+        public static string putSync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(_databaseURL);

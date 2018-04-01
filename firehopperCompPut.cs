@@ -61,7 +61,7 @@ namespace firehopper
         /// </summary>
         /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
         /// to store data in output parameters.</param>
-        protected override async void SolveInstance(IGH_DataAccess DA)
+        protected override void SolveInstance(IGH_DataAccess DA)
         {
             DA.GetData<string>(0, ref apiKey);
             DA.GetData<string>(1, ref databaseURL);
@@ -73,7 +73,7 @@ namespace firehopper
             {
                 try
                 {
-                    response = await putAsync(apiKey, databaseURL, databaseNode, keyValuePair);
+                    response = firebaseManager.putSync(apiKey, databaseURL, databaseNode, keyValuePair);
                 }
                 catch (Exception e)
                 {
@@ -87,22 +87,6 @@ namespace firehopper
             }
 
             DA.SetData(0, response);
-        }
-
-        public static async Task<string> putAsync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(_databaseURL);
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Basic", "Bearer " + _apiKey);
-
-            HttpContent httpContent = new StringContent(_keyValuePair);
-            HttpResponseMessage res = await httpClient.PutAsync(_databaseURL + _databaseNode + ".json", httpContent);
-
-            return res.StatusCode.ToString();
         }
 
         /// <summary>
