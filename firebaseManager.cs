@@ -7,6 +7,9 @@ namespace firehopper
 {
     class firebaseManager
     {
+        /// <summary>
+        /// This is a method that does the GET request asynchronously to Firebase.
+        /// </summary>
         public static async Task<string> getAsync(string _apiKey, string _databaseURL, string _databaseNode)
         {
             HttpClient httpClient = new HttpClient();
@@ -22,6 +25,9 @@ namespace firehopper
             return responseBodyAsText;
         }
 
+        /// <summary>
+        /// This is a method that does the GET request synchronously to Firebase.
+        /// </summary>
         public static string getSync(string _apiKey, string _databaseURL, string _databaseNode)
         {
             HttpClient httpClient = new HttpClient();
@@ -37,6 +43,9 @@ namespace firehopper
             return responseBodyAsText;
         }
 
+        /// <summary>
+        /// This is a method that does the PUT request asynchronously to Firebase.
+        /// </summary>
         public static async Task<string> putAsync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
         {
             HttpClient httpClient = new HttpClient();
@@ -53,6 +62,9 @@ namespace firehopper
             return res.StatusCode.ToString();
         }
 
+        /// <summary>
+        /// This is a method that does the PUT request synchronously to Firebase.
+        /// </summary>
         public static string putSync(string _apiKey, string _databaseURL, string _databaseNode, string _keyValuePair)
         {
             HttpClient httpClient = new HttpClient();

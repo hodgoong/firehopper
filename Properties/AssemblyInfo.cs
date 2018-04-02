@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("firehopper")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Grasshopper component RESTful interface for Google Firebase")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Hojoong Chung")]
 [assembly: AssemblyProduct("firehopper")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

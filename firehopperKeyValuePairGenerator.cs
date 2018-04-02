@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using Grasshopper.Kernel;
 
-// In order to load the result of this wizard, you will also need to
-// add the output bin/ folder of this project to the list of loaded
-// folder in Grasshopper.
-// You can use the _GrasshopperDeveloperSettings Rhino command for that.
-
 namespace firehopper
 {
     public class firehopperKeyValuePairGenerator : GH_Component
@@ -20,8 +15,8 @@ namespace firehopper
         /// </summary>
         public firehopperKeyValuePairGenerator()
           : base("Firehopper Key-Value Pair Generator", "fhKeyValueGen",
-              "GET request to fetch data from Google Firebase",
-              "Firehopper", "HTTP")
+              "Generate key-value pairs from the given list inputs",
+              "Firehopper", "Data")
         {
         }
 
@@ -30,8 +25,8 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("List of Keys", "KEY", "apiKey provided by Firebase", GH_ParamAccess.list);
-            pManager.AddTextParameter("List of Values", "VAL", "databaseURL provided by Firebase", GH_ParamAccess.list);
+            pManager.AddTextParameter("List of Keys", "K", "List of keys", GH_ParamAccess.list);
+            pManager.AddTextParameter("List of Values", "V", "List of values", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -39,7 +34,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("List of Key-Value Pairs", "KV", "JSON String received from the Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("List of Key-Value Pairs", "KVP", "Generated list of key-value pairs", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace firehopper
                     {
                         string template = "\"{0}\":\"{1}\"";
                         keyValuePairs += string.Format(template, keys[i], values[i]);
-                        //keyValuePairs += "\"" + keys[i] + "\":" + "\"" + values[i] + "\"";
                         if (i < keys.Count - 1)
                         {
                             keyValuePairs += ",";
@@ -92,9 +86,7 @@ namespace firehopper
         {
             get
             {
-                // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                return null;
+                return Resources.firehopper_icon_keyval;
             }
         }
 

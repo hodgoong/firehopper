@@ -1,11 +1,6 @@
 ﻿using System;
 using Grasshopper.Kernel;
 
-// In order to load the result of this wizard, you will also need to
-// add the output bin/ folder of this project to the list of loaded
-// folder in Grasshopper.
-// You can use the _GrasshopperDeveloperSettings Rhino command for that.
-
 namespace firehopper
 {
     public class firehopperCompGet : GH_Component
@@ -25,8 +20,8 @@ namespace firehopper
         /// new tabs/panels will automatically be created.
         /// </summary>
         public firehopperCompGet()
-          : base("Firehopper Get", "fhGET",
-              "GET request to fetch data from Google Firebase",
+          : base("Firehopper GET", "fhGET",
+              "Trigger GET request to fetch data from Google Firebase",
               "Firehopper", "HTTP")
         {
         }
@@ -36,10 +31,10 @@ namespace firehopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("apiKey", "KEY", "apiKey provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseURL", "URL", "databaseURL provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("databaseNode", "NO", "databaseNode in the Firebase", GH_ParamAccess.item, "");
-            pManager.AddBooleanParameter("trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
+            pManager.AddTextParameter("API Key", "AK", "API Key provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("Database URL", "U", "Database URL provided by Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("Database Node", "N", "Database Node in Firebase", GH_ParamAccess.item, "");
+            pManager.AddBooleanParameter("Trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -47,7 +42,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("JSON String", "J", "JSON String received from the Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("JSON String", "J", "JSON String received from Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -93,9 +88,7 @@ namespace firehopper
         {
             get
             {
-                // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                return null;
+                return Resources.firehopper_icon_get;
             }
         }
 
