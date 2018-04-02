@@ -56,7 +56,7 @@ The GET component triggers GET request to Firebase to fetch the JSON string. Thi
 
 #### Firehopper Query using ghJSON
 JSON string retrieved from Firehopper GET component can be further queried with ghJSON(https://mathrioshka.ru/ghjson/) as below example:
-![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_queryUsingGHJSON.png)
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_queryUsingGHJSON.PNG)
 
 ## Author
 Hojoong Chung - https://github.com/hodgoong http://hojoongchung.wordpress.com hodgoong@gmail.com
