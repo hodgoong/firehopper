@@ -26,7 +26,7 @@ namespace firehopper
             get
             {
                 //Return a short string describing the purpose of this GHA library.
-                return "";
+                return "Grasshopper component RESTful interface for Google Firebase";
             }
         }
         public override Guid Id
@@ -42,7 +42,7 @@ namespace firehopper
             get
             {
                 //Return a string identifying you or your company.
-                return "";
+                return "Hojoong Chung";
             }
         }
         public override string AuthorContact
@@ -50,7 +50,7 @@ namespace firehopper
             get
             {
                 //Return a string representing your preferred contact details.
-                return "";
+                return "hodgoong@gmail.com";
             }
         }
     }
