@@ -24,6 +24,9 @@ Visit http://firebase.google.com to create an account and to create new project.
 After creating the account and the project, you can get the following information from 'Project Overview' section in the Firebase console. We need 'apiKey' and 'databaseURL' values.
 ![firehopper_firebase_setup](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_firebaseSetup.PNG)
 
+#### Download Firehopper
+Download firehopper.gha in the 'Release' tab in this github repo to Grasshopper Library folder.
+
 ### Data
 #### Firehopper Key-Value Pair Generator
 ![firehopper_key-value pair generator](https://github.com/hodgoong/firehopper/blob/master/Resources/firehopper_icon_keyval.png)
