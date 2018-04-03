@@ -60,9 +60,12 @@ The result of above example is shown below:
 The GET component triggers GET request to Firebase to fetch the JSON string. This component requires 'apiKey' and 'databaseURL' information retrieved from the 'Setup' section in this page. Basic usage of the GET component is illustrated on below images:
 ![firehopper_PUT example](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_get.PNG)
 
-#### Firehopper Query using ghJSON
+#### Query using ghJSON
 JSON string retrieved from Firehopper GET component can be further queried with ghJSON(https://mathrioshka.ru/ghjson/) as below example:
 ![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_queryUsingGHJSON.PNG)
+
+#### Usage Example with Geometry Parameter
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_sphere.PNG)
 
 ## Author
 Hojoong Chung - https://github.com/hodgoong http://hojoongchung.wordpress.com hodgoong@gmail.com
