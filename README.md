@@ -63,3 +63,5 @@ JSON string retrieved from Firehopper GET component can be further queried with 
 
 ## Author
 Hojoong Chung - https://github.com/hodgoong http://hojoongchung.wordpress.com hodgoong@gmail.com
+
+firehopper © 2018 Hojoong Chung
