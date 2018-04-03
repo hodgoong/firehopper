@@ -4,6 +4,9 @@ ___Rhino Grasshopper's RESTful interface for Google Firebase___
 #### Last Update:
 2 APR 2018
 
+#### Download
+http://www.food4rhino.com/app/firehopper
+
 #### Development Environment:
 - Microsoft Visual Studio Community 2017 Version 15.5.0
 - Rhino: Version 5 SR14 64-bit
@@ -25,7 +28,7 @@ After creating the account and the project, you can get the following informatio
 ![firehopper_firebase_setup](https://github.com/hodgoong/firehopper/blob/master/Examples/firehopper_example_firebaseSetup.PNG)
 
 #### Download Firehopper
-Download firehopper.gha in the 'Release' tab in this github repo to Grasshopper Library folder.
+Download firehopper.gha in the 'Release' tab in this github repo or at food4rhino(http://www.food4rhino.com/app/firehopper) and save under the Grasshopper library folder.
 
 ### Data
 #### Firehopper Key-Value Pair Generator
