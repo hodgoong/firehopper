@@ -8,7 +8,6 @@ namespace firehopper
         public string apiKey;
         public string databaseURL;
         public string databaseNode;
-        public string keyValuePair;
         public bool trigger;
 
         public string response;
@@ -37,9 +36,7 @@ namespace firehopper
             pManager.AddTextParameter("API Key", "AK", "API Key provided by Firebase", GH_ParamAccess.item);
             pManager.AddTextParameter("Database URL", "U", "Database URL provided by Firebase", GH_ParamAccess.item);
             pManager.AddTextParameter("Database Node", "N", "Database Node in the Firebase", GH_ParamAccess.item, "");
-            pManager.AddTextParameter("Key-Value Pair", "KVP", "Key-Value pair to save in Firebase", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Trigger", "T", "Trigger the PUT request", GH_ParamAccess.item);
-
         }
 
         /// <summary>
@@ -60,8 +57,7 @@ namespace firehopper
             DA.GetData<string>(0, ref apiKey);
             DA.GetData<string>(1, ref databaseURL);
             DA.GetData<string>(2, ref databaseNode);
-            DA.GetData<string>(3, ref keyValuePair);
-            DA.GetData<bool>(4, ref trigger);
+            DA.GetData<bool>(3, ref trigger);
 
             DA.IncrementIteration();
             DA.SetData(0, response);
@@ -86,7 +82,7 @@ namespace firehopper
                 {
                     try
                     {
-                        firebaseManager.putAsync(apiKey, databaseURL, databaseNode, keyValuePair).ContinueWith(r =>
+                        firebaseManager.deleteAsync(apiKey, databaseURL, databaseNode).ContinueWith(r =>
                         {
                             Grasshopper.Instances.ActiveCanvas.Invoke((Action)delegate
                             {
@@ -113,7 +109,7 @@ namespace firehopper
         {
             get
             {
-                return Resources.Resources.firehopper_icon_put;
+                return Resources.Resources.firehopper_icon_delete;
             }
         }
 
@@ -124,7 +120,7 @@ namespace firehopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("39aa9974-c135-4e21-bcdf-1c4d4b0caf49"); }
+            get { return new Guid("8991293d-984b-4b2c-9c40-0b0cf5fd8a50"); }
         }
     }
 }

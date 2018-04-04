@@ -63,6 +63,16 @@ namespace firehopper.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap firehopper_icon_delete {
+            get {
+                object obj = ResourceManager.GetObject("firehopper_icon_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap firehopper_icon_get {
             get {
                 object obj = ResourceManager.GetObject("firehopper_icon_get", resourceCulture);
@@ -76,6 +86,26 @@ namespace firehopper.Resources {
         internal static System.Drawing.Bitmap firehopper_icon_keyval {
             get {
                 object obj = ResourceManager.GetObject("firehopper_icon_keyval", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap firehopper_icon_patch {
+            get {
+                object obj = ResourceManager.GetObject("firehopper_icon_patch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap firehopper_icon_post {
+            get {
+                object obj = ResourceManager.GetObject("firehopper_icon_post", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

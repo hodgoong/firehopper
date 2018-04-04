@@ -86,7 +86,7 @@ namespace firehopper
                 {
                     try
                     {
-                        firebaseManager.putAsync(apiKey, databaseURL, databaseNode, keyValuePair).ContinueWith(r =>
+                        firebaseManager.postAsync(apiKey, databaseURL, databaseNode, keyValuePair).ContinueWith(r =>
                         {
                             Grasshopper.Instances.ActiveCanvas.Invoke((Action)delegate
                             {
@@ -113,7 +113,7 @@ namespace firehopper
         {
             get
             {
-                return Resources.Resources.firehopper_icon_put;
+                return Resources.Resources.firehopper_icon_post;
             }
         }
 
@@ -124,7 +124,7 @@ namespace firehopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("39aa9974-c135-4e21-bcdf-1c4d4b0caf49"); }
+            get { return new Guid("6ad1b932-1eb9-4bc1-a343-53824ed4f8a3"); }
         }
     }
 }
