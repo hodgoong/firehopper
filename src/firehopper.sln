@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "firehopper", "firehopper.csproj", "{1AB39631-4C93-411D-9C50-0E4066D35722}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "firehopper", "firehopper\firehopper.csproj", "{1AB39631-4C93-411D-9C50-0E4066D35722}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

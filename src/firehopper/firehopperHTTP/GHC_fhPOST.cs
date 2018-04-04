@@ -3,7 +3,7 @@ using Grasshopper.Kernel;
 
 namespace firehopper
 {
-    public class firehopperCompPut : GH_Component
+    public class fhPOST : GH_Component
     {
         public string apiKey;
         public string databaseURL;
@@ -22,9 +22,9 @@ namespace firehopper
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public firehopperCompPut()
-          : base("Firehopper PUT", "fhPUT",
-              "Trigger PUT request to save key-value pair data in Google Firebase",
+        public fhPOST()
+          : base("Firehopper POST", "fhPOST",
+              "Trigger POST request to save key-value pair data in Google Firebase",
               "Firehopper", "HTTP")
         {
         }
@@ -113,7 +113,7 @@ namespace firehopper
         {
             get
             {
-                return Resources.firehopper_icon_put;
+                return Resources.Resources.firehopper_icon_put;
             }
         }
 

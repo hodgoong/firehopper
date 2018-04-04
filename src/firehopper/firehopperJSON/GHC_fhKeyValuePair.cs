@@ -4,7 +4,7 @@ using Grasshopper.Kernel;
 
 namespace firehopper
 {
-    public class firehopperKeyValuePairGenerator : GH_Component
+    public class fhKeyValuePair : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -13,8 +13,8 @@ namespace firehopper
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public firehopperKeyValuePairGenerator()
-          : base("Firehopper Key-Value Pair Generator", "fhKeyValueGen",
+        public fhKeyValuePair()
+          : base("Firehopper Key-Value Pair Generator", "fhKeyValuePair",
               "Generate key-value pairs from the given list inputs",
               "Firehopper", "Data")
         {
@@ -86,7 +86,7 @@ namespace firehopper
         {
             get
             {
-                return Resources.firehopper_icon_keyval;
+                return Resources.Resources.firehopper_icon_keyval;
             }
         }
 

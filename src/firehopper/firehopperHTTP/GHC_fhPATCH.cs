@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Grasshopper.Kernel;
 
 namespace firehopper
 {
-    public class firehopperCompGet : GH_Component
+    public class fhPATCH : GH_Component
     {
         public string apiKey;
         public string databaseURL;
         public string databaseNode;
+        public string keyValuePair;
         public bool trigger;
 
         public string response;
@@ -22,9 +22,9 @@ namespace firehopper
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public firehopperCompGet()
-          : base("Firehopper GET", "fhGET",
-              "Trigger GET request to fetch data from Google Firebase",
+        public fhPATCH()
+          : base("Firehopper PATCH", "fhPATCH",
+              "Trigger PATCH request to modify key-value pair data in Google Firebase",
               "Firehopper", "HTTP")
         {
         }
@@ -36,8 +36,10 @@ namespace firehopper
         {
             pManager.AddTextParameter("API Key", "AK", "API Key provided by Firebase", GH_ParamAccess.item);
             pManager.AddTextParameter("Database URL", "U", "Database URL provided by Firebase", GH_ParamAccess.item);
-            pManager.AddTextParameter("Database Node", "N", "Database Node in Firebase", GH_ParamAccess.item, "");
-            pManager.AddBooleanParameter("Trigger", "T", "Trigger the GET request", GH_ParamAccess.item);
+            pManager.AddTextParameter("Database Node", "N", "Database Node in the Firebase", GH_ParamAccess.item, "");
+            pManager.AddTextParameter("Key-Value Pair", "KVP", "Key-Value pair to save in Firebase", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Trigger", "T", "Trigger the PUT request", GH_ParamAccess.item);
+
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace firehopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("JSON String", "J", "JSON String received from Firebase", GH_ParamAccess.item);
+            pManager.AddTextParameter("Status", "S", "Status received from Firebase", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -58,7 +60,8 @@ namespace firehopper
             DA.GetData<string>(0, ref apiKey);
             DA.GetData<string>(1, ref databaseURL);
             DA.GetData<string>(2, ref databaseNode);
-            DA.GetData<bool>(3, ref trigger);
+            DA.GetData<string>(3, ref keyValuePair);
+            DA.GetData<bool>(4, ref trigger);
 
             DA.IncrementIteration();
             DA.SetData(0, response);
@@ -83,7 +86,7 @@ namespace firehopper
                 {
                     try
                     {
-                        firebaseManager.getAsync(apiKey, databaseURL, databaseNode).ContinueWith(r =>
+                        firebaseManager.putAsync(apiKey, databaseURL, databaseNode, keyValuePair).ContinueWith(r =>
                         {
                             Grasshopper.Instances.ActiveCanvas.Invoke((Action)delegate
                             {
@@ -110,7 +113,7 @@ namespace firehopper
         {
             get
             {
-                return Resources.firehopper_icon_get;
+                return Resources.Resources.firehopper_icon_put;
             }
         }
 
@@ -121,7 +124,7 @@ namespace firehopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("e0c92102-0f6f-4434-8de0-f1774eb2d70c"); }
+            get { return new Guid("39aa9974-c135-4e21-bcdf-1c4d4b0caf49"); }
         }
     }
 }
