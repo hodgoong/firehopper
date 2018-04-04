@@ -32,7 +32,7 @@ Download firehopper.gha in the 'Release' tab in this github repo or at food4rhin
 
 ### Data
 #### firehopper Key-Value Pair Generator
-![firehopper_key-value pair generator](https://github.com/hodgoong/firehopper/blob/master/Resources/firehopper_icon_keyval.png)
+![firehopper_key-value pair generator](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_icon_keyval.png)
 
 The key-value pair generator combines two sets of strings into JSON style string format. The component will throw an error when two lists contain different amount of string elements inside. 
 ![firehopper_key-value pair generator example](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_keyvalgen.PNG)
