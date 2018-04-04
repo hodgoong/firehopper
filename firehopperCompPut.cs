@@ -12,6 +12,8 @@ namespace firehopper
         public bool trigger;
 
         public string response;
+        private bool asyncDone = false;
+        private bool asyncCalled = false;
 
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -61,24 +63,46 @@ namespace firehopper
             DA.GetData<string>(3, ref keyValuePair);
             DA.GetData<bool>(4, ref trigger);
 
-            if (trigger == true)
-            {
-                try
-                {
-                    response = firebaseManager.putSync(apiKey, databaseURL, databaseNode, keyValuePair);
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine(e.Message);
-                }
-            }
-
-            if (trigger == false)
-            {
-                response = null;
-            }
-
+            DA.IncrementIteration();
             DA.SetData(0, response);
+        }
+
+        /// <summary>
+        /// This is the method called after setting up the output data.
+        /// It is necessary to enable the asynchronous behaviour.
+        /// </summary>
+        protected override void AfterSolveInstance()
+        {
+            base.AfterSolveInstance();
+
+            if (asyncDone == true && asyncCalled == true)
+            {
+                asyncDone = false;
+                asyncCalled = false;
+            }
+            else if (asyncDone == false && asyncCalled == false)
+            {
+                if (trigger == true)
+                {
+                    try
+                    {
+                        firebaseManager.putAsync(apiKey, databaseURL, databaseNode, keyValuePair).ContinueWith(r =>
+                        {
+                            Grasshopper.Instances.ActiveCanvas.Invoke((Action)delegate
+                            {
+                                response = r.Result;
+                                asyncDone = true;
+                                ExpireSolution(true);
+                            });
+                        });
+                        asyncCalled = true;
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine(e.Message);
+                    }
+                }
+            }
         }
 
         /// <summary>

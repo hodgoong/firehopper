@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Grasshopper.Kernel;
 
 namespace firehopper
@@ -11,6 +12,8 @@ namespace firehopper
         public bool trigger;
 
         public string response;
+        private bool asyncDone = false;
+        private bool asyncCalled = false;
 
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -57,26 +60,45 @@ namespace firehopper
             DA.GetData<string>(2, ref databaseNode);
             DA.GetData<bool>(3, ref trigger);
 
-            if (trigger == true)
-            {
-                DA.DisableGapLogic();
-                try
-                {
-                    response = firebaseManager.getSync(apiKey, databaseURL, databaseNode);
-                    DA.IncrementIteration();
-                    DA.SetData(0, response);
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine(e.Message);
-                }
-            }
+            DA.IncrementIteration();
+            DA.SetData(0, response);
+        }
 
-            if (trigger == false)
+        /// <summary>
+        /// This is the method called after setting up the output data.
+        /// It is necessary to enable the asynchronous behaviour.
+        /// </summary>
+        protected override void AfterSolveInstance()
+        {
+            base.AfterSolveInstance();
+
+            if (asyncDone == true && asyncCalled == true)
             {
-                response = null;
-                DA.IncrementIteration();
-                DA.SetData(0, response);
+                asyncDone = false;
+                asyncCalled = false;
+            }
+            else if (asyncDone == false && asyncCalled == false)
+            {
+                if (trigger == true)
+                {
+                    try
+                    {
+                        firebaseManager.getAsync(apiKey, databaseURL, databaseNode).ContinueWith(r =>
+                        {
+                            Grasshopper.Instances.ActiveCanvas.Invoke((Action)delegate
+                            {
+                                response = r.Result;
+                                asyncDone = true;
+                                ExpireSolution(true);
+                            });
+                        });
+                        asyncCalled = true;
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine(e.Message);
+                    }
+                }
             }
         }
 
