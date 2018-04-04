@@ -1,20 +1,14 @@
+# firehopper
 ![firehopper_logo](https://github.com/hodgoong/firehopper/blob/master/firehopper_logo.jpg)
 ___Rhino Grasshopper's RESTful interface for Google Firebase___
+
+Firehopper is a Grasshopper add-in that interacts with Google Firebase in RESTful ways. User can simply request a PUT to store JSON style data in Google Firebase, PATCH to modify, POST to incrementally save data, DELETE to delete, and reqeust GET to fetch the data. This component will be updated further to support different functionality supported by Google Firebase
 
 #### Last Update:
 4 APR 2018
 
 #### Download
 http://www.food4rhino.com/app/firehopper
-
-#### Development Environment:
-- Microsoft Visual Studio Community 2017 Version 15.5.0
-- Rhino Version 5 SR14 64-bit
-- Grasshopper Build 0.9.0076
-
-#### Dependancies (run-time version):
-- Grasshopper.dll (v4.0.30319)
-- System.Net.Http.dll (v4.0.30319)
 
 ## How to use
 ![firehopper_components](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_sequencial.PNG)
@@ -81,6 +75,15 @@ Will be updated soon.
 
 #### Usage Example with Geometry Parameter
 ![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_sphere.PNG)
+
+#### Development Environment:
+- Microsoft Visual Studio Community 2017 Version 15.5.0
+- Rhino Version 5 SR14 64-bit
+- Grasshopper Build 0.9.0076
+
+#### Dependancies (run-time version):
+- Grasshopper.dll (v4.0.30319)
+- System.Net.Http.dll (v4.0.30319)
 
 ## Author
 Hojoong Chung - https://github.com/hodgoong http://hojoongchung.wordpress.com hodgoong@gmail.com
