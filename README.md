@@ -32,14 +32,14 @@ Download firehopper.gha in the 'Release' tab in this github repo or at food4rhin
 
 ### Data
 #### firehopper Key-Value Pair Generator
-![firehopper_key-value pair generator](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_icon_keyval.png)
+![firehopper_key-value pair generator](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_keyval.png)
 
 The key-value pair generator combines two sets of strings into JSON style string format. The component will throw an error when two lists contain different amount of string elements inside. 
 ![firehopper_key-value pair generator example](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_keyvalgen.PNG)
 
 ### HTTP
 #### firehopper PUT 
-![firehopper_PUT_component](https://github.com/hodgoong/firehopper/blob/master/Resources/firehopper_icon_put.png)
+![firehopper_PUT_component](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_put.png)
 
 The PUT component triggers PUT request to Firebase to store the JSON string. This component requires 'apiKey' and 'databaseURL' information retrieved from the 'Setup' section in this page. Basic usage of the PUT component is illustrated on below images:
 ![firehopper_PUT example](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_put.PNG)
@@ -55,7 +55,7 @@ The result of above example is shown below:
 ![firehopper_PUT example_result](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_firebaseKeyValGen+put.PNG)
 
 #### firehopper GET
-![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/Resources/firehopper_icon_get.png)
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_get.png)
 
 The GET component triggers GET request to Firebase to fetch the JSON string. This component requires 'apiKey' and 'databaseURL' information retrieved from the 'Setup' section in this page. Basic usage of the GET component is illustrated on below images:
 ![firehopper_PUT example](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_get.PNG)
@@ -63,6 +63,21 @@ The GET component triggers GET request to Firebase to fetch the JSON string. Thi
 #### Query using ghJSON
 JSON string retrieved from firehopper GET component can be further queried with ghJSON(https://mathrioshka.ru/ghjson/) as below example:
 ![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_queryUsingGHJSON.PNG)
+
+#### firehopper POST
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_post.png)
+
+Will be updated soon.
+
+#### firehopper PATCH
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_patch.png)
+
+Will be updated soon.
+
+#### firehopper DELETE
+![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/src/firehopper/Resources/firehopper_icon_delete.png)
+
+Will be updated soon.
 
 #### Usage Example with Geometry Parameter
 ![firehopper_GET_component](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_sphere.PNG)
