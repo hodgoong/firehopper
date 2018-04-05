@@ -12,9 +12,6 @@ Firehopper is a Grasshopper add-in that interacts with Google Firebase in RESTfu
 #### Last Update:
 4 APR 2018
 
-#### Download
-http://www.food4rhino.com/app/firehopper
-
 ## How to use
 ![firehopper_components](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_sequencial.PNG)
 
