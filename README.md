@@ -1,6 +1,9 @@
 # firehopper
-
+![Platforms](https://img.shields.io/badge/platform-windows-lightgray.svg)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://opensource.org/licenses/MIT)
 [![Join the chat at https://gitter.im/hodgoong/firehopper](https://badges.gitter.im/hodgoong/firehopper.svg)](https://gitter.im/hodgoong/firehopper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 ![firehopper_logo](https://github.com/hodgoong/firehopper/blob/master/firehopper_logo.jpg)
 ___Rhino Grasshopper's RESTful interface for Google Firebase___
 
