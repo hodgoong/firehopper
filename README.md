@@ -3,14 +3,10 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://opensource.org/licenses/MIT)
 [![Join the chat at https://gitter.im/hodgoong/firehopper](https://badges.gitter.im/hodgoong/firehopper.svg)](https://gitter.im/hodgoong/firehopper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
 ![firehopper_logo](https://github.com/hodgoong/firehopper/blob/master/firehopper_logo.jpg)
 ___Rhino Grasshopper's RESTful interface for Google Firebase___
 
-Firehopper is a Grasshopper add-in that interacts with Google Firebase in RESTful ways. User can simply request a PUT to store JSON style data in Google Firebase, PATCH to modify, POST to incrementally save data, DELETE to delete, and reqeust GET to fetch the data. This component will be updated further to support different functionality supported by Google Firebase
-
-#### Last Update:
-4 APR 2018
+Firehopper is a Grasshopper add-in that interacts with Google Firebase in RESTful ways. User can simply request a PUT to store JSON style data in Google Firebase, PATCH to modify, POST to incrementally save data, DELETE to delete, and reqeust GET to fetch the data. This component will be updated further to support different functionality supported by Google Firebase.
 
 ## How to use
 ![firehopper_components](https://github.com/hodgoong/firehopper/blob/master/examples/firehopper_example_sequencial.PNG)
