@@ -5,9 +5,7 @@ using System.Net.Http.Headers;
 
 namespace firehopper
 {
-    public
-
-    class firebaseManager
+    public class firebaseManager
     {
         /// <summary>
         /// This is a method that does the GET request asynchronously to Firebase.
