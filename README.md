@@ -84,6 +84,9 @@ Will be updated soon.
 - System.Net.Http.dll (v4.0.30319)
 
 ## Author
-Hojoong Chung - https://github.com/hodgoong http://hojoongchung.wordpress.com hodgoong@gmail.com
+Hojoong Chung
+https://github.com/hodgoong
+http://hojoongchung.blogspot.com
+hojoong.chung(at)gmail.com
 
 firehopper © 2018 Hojoong Chung
